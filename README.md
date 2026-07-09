@@ -33,8 +33,8 @@ python3 --version
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/ktuResult.git
-cd ktuResult
+git clone https://github.com/prawmathean/FKtuResults.git
+cd FKtuResults
 ```
 
 ### 2. (Recommended) Create a virtual environment
@@ -68,7 +68,7 @@ python3 FetchMyResults.py
 You will be prompted for:
 
 1. **USERNAME** — your KTU portal username (usually your register number)
-2. **Password** — entered securely (hidden input, not echoed)
+2. **Password** — entered securely (**hidden** input, not echoed)
 3. **Semester ID** — the ID of the semester whose results you want
 
 ### Finding your Semester ID
@@ -111,9 +111,9 @@ If the KTU server is overloaded, the script will automatically retry (up to 100 
 |---|---|
 | `<username>_<semId>_gradecard.html` | Full raw HTML response from the portal |
 
-> The HTML file is ignored by git (see `.gitignore`) so your results are never accidentally committed.
 
 Open the saved HTML file in any browser for the full, formatted grade card view.
+(you might've to scroll down a bit inorder to see the actual table of your results)
 
 ---
 
