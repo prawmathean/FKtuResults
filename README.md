@@ -48,6 +48,10 @@ venv\Scripts\activate           # Windows
 ### 3. Install dependencies
 
 ```bash
+pip install -r requirements.txt
+```
+Or 
+```bash
 pip install requests beautifulsoup4 urllib3 colorama
 ```
 
@@ -134,3 +138,9 @@ Open the saved HTML file in any browser for the full, formatted grade card view.
 
 - This script uses `verify=False` for SSL because the KTU portal uses a self-signed certificate. This is safe for this specific use case but means certificate authenticity is not verified.
 - Credentials are never stored to disk — they only live in memory for the duration of the script.
+
+
+---
+
+## SUPPORT 
+Incase if this project of mine helped you out, or if you find this cool, feel free to buy me a coffee and support me : https://prajwal-56.github.io/donate
