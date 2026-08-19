@@ -4,11 +4,13 @@ import getpass
 import urllib3
 import time
 import random
+from colorama import Fore, Style, init
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 LOGIN_URL = "https://app.ktu.edu.in/login.htm"
 RESULT_PAGE_URL = "https://app.ktu.edu.in/eu/res/semesterGradeCardListing.htm"
+support_url = "https://prajwal-56.github.io/donate"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -126,10 +128,25 @@ def main():
             clean_row = [col.text.strip() for col in cols]
             if clean_row:
                 print(" | ".join(clean_row))
+
     else:
         print("Could not find the grades table. Either results aren't published yet, "
               "or the page structure differs from what's expected — check the saved HTML file.")
 
+# ASCII ART
+    print("\n-----------------------------------------------------------------\n")
+    with open("rick_ascii.txt", "r") as ascii:
+        rick_ascii = ascii.read()
+
+    init(autoreset=True) # For windows support
+
+    highlighted_url = Fore.YELLOW + support_url + Style.RESET_ALL + Fore.CYAN  # make the support url appear in yellow
+    updated_ascii = rick_ascii.replace(support_url , highlighted_url)     # updated_ascii - replaced the support_url with yellow
+
+    print("\n\n")
+    print(Fore.CYAN + updated_ascii)
+
+    print("\n-----------------------------------------------------------------\n")
 
 if __name__ == "__main__":
     main()
