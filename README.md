@@ -48,7 +48,7 @@ venv\Scripts\activate           # Windows
 ### 3. Install dependencies
 
 ```bash
-pip install requests beautifulsoup4 urllib3
+pip install requests beautifulsoup4 urllib3 colorama
 ```
 
 | Package | Purpose |
@@ -56,6 +56,7 @@ pip install requests beautifulsoup4 urllib3
 | `requests` | HTTP client — handles login, sessions, and result fetching |
 | `beautifulsoup4` | HTML parser — extracts the CSRF token and grades table |
 | `urllib3` | Bundled with `requests`; used here to suppress SSL warnings |
+| `colorama` | for the ascii art **(important)** |
 
 ---
 
@@ -69,7 +70,7 @@ You will be prompted for:
 
 1. **USERNAME** — your KTU portal username (usually your register number)
 2. **Password** — entered securely (**hidden** input, not echoed)
-3. **Semester ID** — the ID of the semester whose results you want
+3. **Semester ID** — the ID of the semester whose results you want (Just the number of your semester. for eg - If you want the result of 4th Semester simply enter `4` and hit enter)
 
 ### Finding your Semester ID
 
