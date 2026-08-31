@@ -1,1 +1,4 @@
 *html
+venv/
+users.json
+__pycache__/
