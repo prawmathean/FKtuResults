@@ -48,8 +48,9 @@ def get_csrf_token(html_text):
     soup = BeautifulSoup(html_text, 'html.parser')
     field = soup.find('input', {'name': 'CSRF_TOKEN'})
     if not field or not field.get('value'):
-        raise ValueError("Could not find CSRF token in page — page structure may have changed, "
-                          "or we got a login/error page instead of the expected one.")
+        raise ValueError("Could not find CSRF token in page - page structure may have changed, "
+                          "or we got a login/error page instead of the expected one." \
+                          "You can report about this to the developer of this : https://prajwal-56.github.io/contact")
     return field['value']
 
 
@@ -85,14 +86,14 @@ def main():
         print("Warning: login response didn't contain expected markers. Continuing anyway, "
               "but if this fails, double check your credentials.")
 
-    semId = input("Enter the semester ID you want to fetch result for: ")
+    semId = input("Enter the semester ID you want to fetch result for(just the number. For example : \"2\" ,\"3\" ,\"4\",... ): ")
 
     print("Fetching results page (for a fresh CSRF token)...")
     results_page_get = request_with_retry(client.get, RESULT_PAGE_URL, headers=HEADERS, verify=False)
 
     if looks_logged_out(results_page_get.text):
         raise RuntimeError("Session appears to have been logged out before we could fetch results. "
-                            "Try re-running — session/token may have expired during the wait.")
+                            "Try re-running - session/token may have expired during the wait.")
 
     results_csrf_token = get_csrf_token(results_page_get.text)
     print("Got fresh CSRF token for results form.")
@@ -105,12 +106,12 @@ def main():
         "search": "Search"
     }
 
-    print("Submitting results request (this is the one likely to 504 — will retry automatically)...")
+    print("Submitting results request (this is the one likely to 504 - will retry automatically)...")
     result_response = request_with_retry(client.post, RESULT_PAGE_URL, data=result_payload,
                                           headers=HEADERS, verify=False, max_retries=100)
 
     if looks_logged_out(result_response.text):
-        raise RuntimeError("Got bounced to a login page on the results POST — session likely expired "
+        raise RuntimeError("Got bounced to a login page on the results POST - session likely expired "
                             "mid-retry. Re-run the script.")
 
     file_name = f"{username}_{semId}_gradecard.html"
@@ -131,7 +132,7 @@ def main():
 
     else:
         print("Could not find the grades table. Either results aren't published yet, "
-              "or the page structure differs from what's expected — check the saved HTML file.")
+              "or the page structure differs from what's expected - check the saved HTML file.")
 
 # ASCII ART
     print("\n-----------------------------------------------------------------\n")
